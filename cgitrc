@@ -1,0 +1,43 @@
+#
+# cgit config
+# see cgitrc(5) for details
+
+about-filter=/usr/lib/cgit/filters/about-formatting.sh
+cache-size=2000
+css=/cgit-css/cgit.css
+enable-git-config=1
+favicon=/cgit-css/favicon.ico
+logo=/cgit-css/cgit.png
+readme=:README.md
+readme=:readme.md
+readme=:README.mkd
+readme=:readme.mkd
+readme=:README.rst
+readme=:readme.rst
+readme=:README.html
+readme=:readme.html
+readme=:README.htm
+readme=:readme.htm
+readme=:README.txt
+readme=:readme.txt
+readme=:README
+readme=:readme
+readme=:INSTALL.md
+readme=:install.md
+readme=:INSTALL.mkd
+readme=:install.mkd
+readme=:INSTALL.rst
+readme=:install.rst
+readme=:INSTALL.html
+readme=:install.html
+readme=:INSTALL.htm
+readme=:install.htm
+readme=:INSTALL.txt
+readme=:install.txt
+readme=:INSTALL
+readme=:install
+remove-suffix=1
+source-filter=/usr/lib/cgit/filters/syntax-highlighting.py
+
+# Needs to be last.
+scan-path=/srv/git/
