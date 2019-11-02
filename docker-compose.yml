@@ -1,0 +1,17 @@
+# vim:ff=unix:ts=2:sw=2:ai:expandtab
+---
+version: '3.5'
+services:
+  cgit:
+    build:
+      context: .
+      cache_from:
+        - adarnimrod/cgit
+    image: adarnimrod/cgit
+    ports:
+      - 80:8080
+    volumes:
+      - git:/srv/git:ro
+
+volumes:
+  git:

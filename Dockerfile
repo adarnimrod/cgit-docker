@@ -11,6 +11,7 @@ RUN apt-get update && \
     && \
     a2enmod cgid && \
     a2enconf cgit && \
+    sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf && \
     install -d -o www-data -g www-data -m 755 /var/cache/cgit && \
     install -d -o www-data -g www-data -m 755 /run/apache2 && \
     install -d -o www-data -g www-data -m 755 /var/log/apache2 && \
@@ -24,7 +25,8 @@ ENV APACHE_RUN_DIR=/run/apache2 \
     APACHE_RUN_USER=www-data \
     APACHE_RUN_GROUP=www-data \
     APACHE_PID_FILE=/run/apache2/apache2.pid
-EXPOSE 80
+EXPOSE 8080
 CMD [ "apache2", "-DFOREGROUND" ]
 VOLUME ["/srv/git"]
-HEALTHCHECK CMD wget --spider --quiet http://localhost/cgit/ --user-agent 'Healthcheck' || exit 1
+USER "www-data"
+HEALTHCHECK CMD wget --spider --quiet http://localhost:8080/cgit/ --user-agent 'Healthcheck' || exit 1

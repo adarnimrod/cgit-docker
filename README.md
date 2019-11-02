@@ -2,6 +2,22 @@
 
 > cgit Docker image.
 
+## Usage
+
+This container runs Apache that is configured with cgit at `/cgit`. It exposes
+port 8080 and serves the repositories under `/srv/git`. The container runs as
+a limited user (`www-data`), so make sure to have the content of `/srv/git`
+readble by it. Also, if you wish to persist the cache, the location is
+`/var/cache/cgit`.
+
+## Example usage
+
+```
+docker -v '/srv/git:/srv/git:ro' -p '80:8080' adarnimrod/cgit
+```
+
+There's also a `docker-compose.yml` as further example.
+
 ## License
 
 This software is licensed under the MIT license (see `LICENSE.txt`).
