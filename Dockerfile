@@ -5,11 +5,13 @@ RUN apt-get update && \
         apache2 \
         cgit \
         groff-base \
+        libcap2-bin \
         patch \
         python3-docutils \
         python3-markdown \
         python3-pygments \
     && \
+    setcap CAP_NET_BIND_SERVICE=+ep /usr/sbin/apache2 && \
     a2enmod cgid && \
     a2enconf cgit && \
     a2enmod status && \

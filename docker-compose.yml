@@ -9,7 +9,7 @@ services:
         - adarnimrod/cgit
     image: adarnimrod/cgit
     ports:
-      - 80:8080
+      - 80:80
     volumes:
       - git:/srv/git:ro
 
