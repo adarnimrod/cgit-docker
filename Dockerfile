@@ -10,6 +10,7 @@ RUN apt-get update && \
         python3-docutils \
         python3-markdown \
         python3-pygments \
+        wget \
     && \
     setcap CAP_NET_BIND_SERVICE=+ep /usr/sbin/apache2 && \
     a2enmod cgid && \
@@ -31,9 +32,9 @@ ENV APACHE_RUN_DIR=/run/apache2 \
     APACHE_PID_FILE=/run/apache2/apache2.pid
 RUN patch --strip 0 --verbose --directory /etc/apache2 --input /root/patch.diff && \
     apache2 -t
-EXPOSE 8080
+EXPOSE 80
 CMD [ "apache2", "-DFOREGROUND" ]
 VOLUME ["/srv/git"]
 USER "www-data"
 WORKDIR /var/www
-HEALTHCHECK CMD wget --spider --quiet http://localhost:8080/cgit/ --user-agent 'Healthcheck' || exit 1
+HEALTHCHECK CMD wget --spider --quiet http://localhost:80/cgit/ --user-agent 'Healthcheck' || exit 1

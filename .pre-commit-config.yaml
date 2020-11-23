@@ -2,14 +2,15 @@
 ---
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.4.0
+    rev: v2.3.0
     hooks:
       - id: check-added-large-files
       - id: check-merge-conflict
+      - id: detect-private-key
       - id: trailing-whitespace
         exclude: \.diff$
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.19.0
+    rev: v1.17.0
     hooks:
       - id: yamllint
   - repo: https://github.com/amperser/proselint/
@@ -17,9 +18,14 @@ repos:
     hooks:
       - id: proselint
         types: [plain-text]
-        exclude: LICENSE|requirements
-  - repo: https://www.shore.co.il/git/docker-pre-commit
+        exclude: LICENSE
+  - repo: https://git.shore.co.il/nimrod/docker-pre-commit.git/
     rev: v0.3.0
     hooks:
       - id: hadolint
       - id: docker-compose
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v0.13.0
+    hooks:
+      - id: detect-secrets
+        exclude: \.diff$
