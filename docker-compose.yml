@@ -4,10 +4,8 @@ version: '3.5'
 services:
   cgit:
     build:
-      # cache_from:
-      #   - adarnimrod/cgit
       context: .
-    # image: adarnimrod/cgit
+    image: registry.shore.co.il/cgit
     restart: always
     volumes:
       - /var/lib/git:/srv/git:ro
